@@ -34,7 +34,7 @@ jobs:
     - name: Push Docker image to registry
       if: success()
       run: |
-        docker tag simple-app:latest ${{secrets.DOCKER_REGISTRY}}/simple-app:latest-tag
+        docker tag simple-app:latest ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_REGISTRY}}:latest-tag
         docker push ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_REGISTRY}}:latest-tag
 
     - name: Deploy with Docker Compose
