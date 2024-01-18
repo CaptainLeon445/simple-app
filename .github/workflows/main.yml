@@ -37,7 +37,4 @@ jobs:
         docker tag simple-app:latest ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_REGISTRY}}:latest-tag
         docker push ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_REGISTRY}}:latest-tag
 
-    - name: Deploy with Docker Compose
-      if: success()
-      run: make deploy
 
