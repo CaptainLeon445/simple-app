@@ -33,7 +33,7 @@ jobs:
 
     - name: Push Docker image to registry
       if: success()
-      run: make docker-push
+      run: docker push ${{secrets.DOCKER_REGISTRY}}/simple-app
 
     - name: Deploy with Docker Compose
       if: success()
