@@ -5,7 +5,7 @@ test:
 	cd server && npm test
 
 build:
-	docker build -t simple-app ./server
+	docker build -t simple-app:latest ./server
 
 docker-login:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin "${DOCKER_REGISTRY}"
