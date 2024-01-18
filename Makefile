@@ -8,12 +8,10 @@ build:
 	docker build -t simple-app ./server
 
 docker-login:
-	echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
-    # echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
+	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin "${DOCKER_REGISTRY}"
 
 docker-push:
-	docker push ${{secrets.DOCKER_REGISTRY}}/simple-app
+	docker push "${secrets.DOCKER_REGISTRY}/simple-app"
 
 deploy:
 	docker-compose -f docker-compose.yml up --build	
